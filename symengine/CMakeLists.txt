@@ -74,6 +74,17 @@ set(HEADERS
     basic-methods.inc   series_flint.h  series_generic.h
 )
 
+# setup pkg-config
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/symengine.pc.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/symengine.pc @ONLY
+  )
+INSTALL (
+  FILES  ${CMAKE_CURRENT_BINARY_DIR}/symengine.pc
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+)
+
+
 # Configure SymEngine using our CMake options:
 configure_file(symengine_config.h.in symengine_config.h)
 # Include the config file:
